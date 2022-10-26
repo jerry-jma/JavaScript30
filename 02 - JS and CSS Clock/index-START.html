@@ -65,6 +65,27 @@
       }
     </style>
 
-    <script></script>
+    <script>
+      const secondHandler = document.querySelector(".second-hand");
+      const minuteHandler = document.querySelector(".min-hand");
+      const hourHandler = document.querySelector(".hour-hand");
+
+      const setDate = () => {
+        const nowTime = new Date();
+        const currentSecond = nowTime.getSeconds();
+        const currentMinute = nowTime.getMinutes();
+        const currentHour = nowTime.getHours();
+
+        const degreeForSecond = (currentSecond / 60) * 360 + 90;
+        const degreeForMinute = (currentMinute / 60) * 360 + 90;
+        const degreeForHour = (currentHour / 24) * 360 + 90;
+
+        secondHandler.style.transform = `rotate(${degreeForSecond}deg)`;
+        minuteHandler.style.transform = `rotate(${degreeForMinute}deg)`;
+        hourHandler.style.transform = `rotate(${degreeForHour}deg)`;
+      };
+
+      setInterval(setDate, 1000);
+    </script>
   </body>
 </html>
